@@ -4,6 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import About from '..';
 
+// React Testing Library's primary guiding principle is it's most important to test the interactions your users will have with the UI
 // note that each test only tests for an individual element
 
 // removes memory data after each test to prevent false results
