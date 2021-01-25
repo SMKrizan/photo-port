@@ -110,7 +110,7 @@ const PhotoList = ({ category }) => {
                 {currentPhotos.map((image, i) => (
                     <img
                         // not common practice but useful; takes advantage of incremental naming
-                        src={require(`../../assets/small/${category}/${i}.jpg`)}
+                        src={require(`../../assets/small/${category}/${i}.jpg`).default}
                         // used for user-assistance devices like screen-readers
                         alt={image.name}
                         className='img-thumbnail mx-1'

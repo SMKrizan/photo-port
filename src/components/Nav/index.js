@@ -10,7 +10,6 @@ const Nav = (props) => {
     } = props;
 
     // useEffect() is an API reflecting lifecycle methods of component
-
     // invoking useEffect() and assigning DOM node in the fn body of the cb fn, where 1st argument 'capitalizeFirstLetter(currentCategory.name)' is cb fn and 2nd argument '[currentCategory]' is array with single element 'currentCategory'; this 2nd argument directs hook to re-render component on changes to state value --> e.g. if currentCategory changes, component will re-render so that user sees change in document.title
     useEffect(() => {
         document.title = capitalizeFirstLetter(currentCategory.name);
