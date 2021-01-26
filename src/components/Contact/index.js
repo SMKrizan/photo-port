@@ -49,11 +49,8 @@ const ContactForm = () => {
 
     return (
         <section>
-            <h1>Contact me</h1>
+            <h1 data-testid='h1tag'>Contact me</h1>
             <form id='contact-form' onSubmit={handleSubmit} >
-                {/* name input
-                email input
-                message area */}
                 <div>
                     {/* due to JS keywords, 'for' is replaced here with 'htmlFor' */}
                     <label htmlFor='name'>Name:</label>
@@ -75,7 +72,7 @@ const ContactForm = () => {
                         <p className='error-test'>{errorMessage}</p>
                     </div>
                 )}
-                <button type='submit'>Submit</button>
+                <button type='submit' data-testid='button'>Submit</button>
             </form>
         </section>
     );
