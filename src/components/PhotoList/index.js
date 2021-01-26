@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import Modal from '../Modal';
+import Modal from '../Modal';
 
 const PhotoList = ({ category }) => {
     // useState() sets default values for array of photos
@@ -104,8 +104,23 @@ const PhotoList = ({ category }) => {
     // goes through each photo in array looking for each that matches user-selected 'category'; each match is returned within 'currentPhotos' array; this array is then mapped and each photo it contains rendered
     const currentPhotos = photos.filter((photo) => photo.category === category);
 
+    // setter and getter
+    const [ currentPhoto, setCurrentPhoto ] = useState();
+
+    // 'image' and index, 'i', will be passed in as props and updates isModalOpen to 'true'
+    const toggleModal = (image, i) => {
+        // updates current photo state using setCurrentPhoto() with data retrieved through click event; spread operator adds <index: i> to current photo state
+        setCurrentPhoto({...image, index: i});
+        setIsModalOpen(true);
+    }
+
+    // we set the default value to false so that the modal does not render until an image is clicked by user
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     return (
         <div>
+            {/* passing in currentPhoto as prop */}
+            {isModalOpen && <Modal currentPhoto={currentPhoto} />}
             <div className='flex-row'>
                 {currentPhotos.map((image, i) => (
                     <img
@@ -114,6 +129,8 @@ const PhotoList = ({ category }) => {
                         // used for user-assistance devices like screen-readers
                         alt={image.name}
                         className='img-thumbnail mx-1'
+                        // onClick to capture individual photo data; 'image' represents object-element in photo array and 'i' will render image
+                        onClick={() => toggleModal(image, i)}
                         // this value must be a unique string
                         key={image.name}
                     />
